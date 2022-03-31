@@ -17,36 +17,8 @@ export class AdresseBokComponent implements OnInit {
     name: 'Rose',
     telephone: '12333329',
     email: 'rose@titanic.us'
-  },{
-    name: 'Rose',
-    telephone: '12333329',
-    email: 'rose@titanic.us'
-  },{
-    name: 'Rose',
-    telephone: '12333329',
-    email: 'rose@titanic.us'
-  },{
-    name: 'Rose',
-    telephone: '12333329',
-    email: 'rose@titanic.us'
-  },{
-    name: 'Rose',
-    telephone: '12333329',
-    email: 'rose@titanic.us'
-  },{
-    name: 'Rose',
-    telephone: '12333329',
-    email: 'rose@titanic.us'
-  },{
-    name: 'Rose',
-    telephone: '12333329',
-    email: 'rose@titanic.us'
-  },{
-    name: 'Rose',
-    telephone: '12333329',
-    email: 'rose@titanic.us'
   }];
-
+  
   contactForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),

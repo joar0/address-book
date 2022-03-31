@@ -3,7 +3,7 @@
         <h2 class="form-header">Contact Form</h2>
     
         <form class="contact-form" [formGroup]="contactForm" #form="ngForm" (ngSubmit)="submitContactForm()">
-            <label for="name">Navn</label>
+            <label for="name">Name</label>
             <input class="form-input" type="text" formControlName="name" required/>
             <p 
                 class="error-danger"
@@ -11,8 +11,7 @@
                         contactForm.get('name')?.hasError('required')">
                 * Name is required
             </p>
-        
-            <label for="email">E-post</label>
+            <label for="email">Email</label>
             <input class="form-input" type="email" formControlName="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
             <p 
                 class="error-danger" 
@@ -26,8 +25,7 @@
                         contactForm.get('email')?.hasError('pattern')">
                 * Email is invalid
             </p>
-
-            <label for="telephone">Telefon</label>
+            <label for="telephone">Telephone</label>
             <input class="form-input" type="tel" formControlName="telephone" required/>
             <p 
                 class="error-danger"
@@ -35,21 +33,20 @@
                         contactForm.get('telephone')?.hasError('required')">
                 * Telephone is required
             </p>
-
-            <button class="submit-button" (click)="submitContactForm">{{ editButton ? 'Oppdater' : 'Legg til' }}</button>
+            <button class="submit-button" (click)="submitContactForm">{{ editButton ? 'Update' : 'Add contact' }}</button>
         </form>
     </div>
     
     <div class="contact-table-container">
-        <h2>Adresse Bok</h2>
+        <h2>Addresse Book</h2>
         <table class="contact-table">
             <thead class="table-header">
                 <tr>
                     <th>Name</th>
                     <th>Telephone</th>
                     <th>Email</th>
-                    <th>Rediger</th>
-                    <th>Slett</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody class="table-body">
@@ -66,6 +63,5 @@
                 </tr>
             </tbody>
         </table>
-    
     </div>    
 </div>

@@ -1,3 +1,32 @@
+.flex-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.contact-form, .contact-table {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 8px;
+}
+
+input {
+    margin-top: 4px;
+}
+
+.submit-button {
+    margin-top: 12px;
+}
+
 table, th, td {
     border:1px solid black;
+    padding: 8px;
+}
+
+.error-danger {
+    color: red;
+    margin: 0.5rem 0 0 0;
 }

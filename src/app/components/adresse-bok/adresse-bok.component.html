@@ -1,45 +1,71 @@
-
-<div>
-    <h2>Contact Form</h2>
-
-    <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="submitContactForm()">
-        <label for="name">Navn</label>
-        <input type="text" formControlName="name" />
+<div class="flex-wrapper">
+    <div>
+        <h2>Contact Form</h2>
     
-        <label for="email">E-post</label>
-        <input type="text" formControlName="email" />
+        <form class="contact-form" [formGroup]="contactForm" #form="ngForm" (ngSubmit)="submitContactForm()">
+            <label for="name">Navn</label>
+            <input type="text" formControlName="name" required/>
+            <p 
+                class="error-danger"
+                *ngIf="(contactForm.get('name')?.dirty || contactForm.get('name')?.touched || form.submitted) && 
+                        contactForm.get('name')?.hasError('required')">
+                * Name is required
+            </p>
+        
+            <label for="email">E-post</label>
+            <input type="email" formControlName="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
+            <p 
+                class="error-danger" 
+                *ngIf="(contactForm.get('email')?.dirty || contactForm.get('email')?.touched || form.submitted) && 
+                        contactForm.get('email')?.hasError('required')">
+                * Email is required
+            </p>
+            <p 
+                class="error-danger" 
+                *ngIf="(contactForm.get('email')?.dirty || contactForm.get('email')?.touched || form.submitted) && 
+                        contactForm.get('email')?.hasError('pattern')">
+                * Email is invalid
+            </p>
 
-        <label for="telephone">Telefon</label>
-        <input type="text" formControlName="telephone" />
-        <button class="submit-button" (click)="submitContactForm">Legg til</button>
-    </form>
-</div>
+            <label for="telephone">Telefon</label>
+            <input type="tel" formControlName="telephone" required/>
+            <p 
+                class="error-danger"
+                *ngIf="(contactForm.get('telephone')?.dirty || contactForm.get('telephone')?.touched || form.submitted) && 
+                        contactForm.get('telephone')?.hasError('required')">
+                * Telephone is required
+            </p>
 
-<div>
-    <h2>Adresse Bok</h2>
-    <table style="width:50%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Telephone</th>
-                <th>Email</th>
-                <th>Rediger</th>
-                <th>Slett</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let contact of this.contacts; let i=index;">
-                <td>{{contact.name}}</td>
-                <td>{{contact.telephone}}</td>
-                <td>{{contact.email}}</td>
-                <td>
-                    <button (click)="onEditButtonClicked(i)">Rediger</button>
-                </td>
-                <td>
-                    <button (click)="onDeleteButtonClicked(i)">Slett</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+            <button class="submit-button" (click)="submitContactForm">{{ editButton ? 'Oppdater' : 'Legg til' }}</button>
+        </form>
+    </div>
+    
+    <div class="contact-table">
+        <h2>Adresse Bok</h2>
+        <table style="width:50%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Telephone</th>
+                    <th>Email</th>
+                    <th>Rediger</th>
+                    <th>Slett</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contact of this.contacts; let i=index;">
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.telephone}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>
+                        <button (click)="onEditButtonClicked(i)">Rediger</button>
+                    </td>
+                    <td>
+                        <button (click)="onDeleteButtonClicked(i)">Slett</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+    </div>    
 </div>

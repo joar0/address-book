@@ -1,10 +1,10 @@
 <div class="flex-wrapper">
-    <div>
-        <h2>Contact Form</h2>
+    <div class="form-container">
+        <h2 class="form-header">Contact Form</h2>
     
         <form class="contact-form" [formGroup]="contactForm" #form="ngForm" (ngSubmit)="submitContactForm()">
             <label for="name">Navn</label>
-            <input type="text" formControlName="name" required/>
+            <input class="form-input" type="text" formControlName="name" required/>
             <p 
                 class="error-danger"
                 *ngIf="(contactForm.get('name')?.dirty || contactForm.get('name')?.touched || form.submitted) && 
@@ -13,7 +13,7 @@
             </p>
         
             <label for="email">E-post</label>
-            <input type="email" formControlName="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
+            <input class="form-input" type="email" formControlName="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"/>
             <p 
                 class="error-danger" 
                 *ngIf="(contactForm.get('email')?.dirty || contactForm.get('email')?.touched || form.submitted) && 
@@ -28,7 +28,7 @@
             </p>
 
             <label for="telephone">Telefon</label>
-            <input type="tel" formControlName="telephone" required/>
+            <input class="form-input" type="tel" formControlName="telephone" required/>
             <p 
                 class="error-danger"
                 *ngIf="(contactForm.get('telephone')?.dirty || contactForm.get('telephone')?.touched || form.submitted) && 
@@ -40,10 +40,10 @@
         </form>
     </div>
     
-    <div class="contact-table">
+    <div class="contact-table-container">
         <h2>Adresse Bok</h2>
-        <table style="width:50%">
-            <thead>
+        <table class="contact-table">
+            <thead class="table-header">
                 <tr>
                     <th>Name</th>
                     <th>Telephone</th>
@@ -52,16 +52,16 @@
                     <th>Slett</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr *ngFor="let contact of this.contacts; let i=index;">
+            <tbody class="table-body">
+                <tr class="table-body-row" *ngFor="let contact of this.contacts; let i=index;">
                     <td>{{contact.name}}</td>
                     <td>{{contact.telephone}}</td>
                     <td>{{contact.email}}</td>
-                    <td>
-                        <button (click)="onEditButtonClicked(i)">Rediger</button>
+                    <td class="icon-cell" (click)="onEditButtonClicked(i)">
+                        <img src="/assets/svg/edit-icon.svg" alt="edit icon">
                     </td>
-                    <td>
-                        <button (click)="onDeleteButtonClicked(i)">Slett</button>
+                    <td class="icon-cell" (click)="onDeleteButtonClicked(i)">
+                        <img src="/assets/svg/trash-icon.svg" alt="trash can">
                     </td>
                 </tr>
             </tbody>
